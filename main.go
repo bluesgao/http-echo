@@ -52,7 +52,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
+func mockResponseData(r *http.Request) interface{}{
 	//req info
 	req := make(map[string]interface{})
 	req["path"] = r.URL.Path
@@ -78,7 +78,11 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 	result["data"] = data
 
+	return result
+}
+
+func index(w http.ResponseWriter, r *http.Request) {
 	//json
-	jsonData, _ := json.Marshal(result)
+	jsonData, _ := json.Marshal(mockResponseData(r))
 	fmt.Fprintf(w, "%s", jsonData)
 }
