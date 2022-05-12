@@ -3,9 +3,11 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	_ "github.com/mkevac/debugcharts"
 	"log"
 	"net"
 	"net/http"
+	_ "net/http/pprof"
 	"os"
 	"time"
 )
