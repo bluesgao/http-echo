@@ -49,12 +49,12 @@ func main() {
 	//ip
 	ip, _ = getLocalIP()
 
-	addr := fmt.Sprintf(":%s", port)
+	addr := fmt.Sprintf("0.0.0.0:%s", port)
 	log.Println("listen and serve ", addr)
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 
-func mockResponseData(r *http.Request) interface{}{
+func mockResponseData(r *http.Request) interface{} {
 	//req info
 	req := make(map[string]interface{})
 	req["path"] = r.URL.Path
