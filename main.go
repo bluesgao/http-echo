@@ -42,15 +42,16 @@ func main() {
 	http.HandleFunc("/", index)
 
 	//port
-	port = os.Getenv("HTTP_ECHO_PORT")
+	port = os.Getenv("HTTP_ECHO_CUSTOM_PORT")
 	if port == "" {
-		port = "8888"
+		port = "8080"
 	}
 	//ip
 	ip, _ = getLocalIP()
 
-	addr := fmt.Sprintf("0.0.0.0:%s", port)
-	log.Println("listen and serve ", addr)
+	addr := fmt.Sprintf(":%s", port)
+	log.Println("listen and serve addr ", addr)
+	//log.Fatal(http.ListenAndServe(":8080", nil))
 	log.Fatal(http.ListenAndServe(addr, nil))
 }
 

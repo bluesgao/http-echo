@@ -1,7 +1,7 @@
 #拉取一个基础镜像golang:alpine作为容器环境
 FROM golang:alpine
 
-ARG port
+ARG custom_port
 
 # 为我们的镜像设置必要的环境变量(其中GOPROXY设置代理很重要,不然很多依赖无法下载)
 ENV GO111MODULE=on \
@@ -9,7 +9,7 @@ ENV GO111MODULE=on \
     GOOS=linux \
     GOARCH=amd64 \
     GOPROXY=https://goproxy.cn,direct \
-    HTTP_ECHO_PORT=${port}
+    HTTP_ECHO_CUSTOM_PORT=${custom_port}
 
 # 移动到容器的工作目录：/build
 WORKDIR /build
